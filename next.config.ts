@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: ["covers.openlibrary.org"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "covers.openlibrary.org",
+      },
+    ],
   },
 };
 

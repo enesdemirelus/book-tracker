@@ -11,4 +11,28 @@ model User {
   id        String   @id @default(cuid())
   clerkId   String   @unique
   email     String?  @unique
+  books     Book[]
+  twenty_six_reading_goal Int?
+}
+
+model Book {
+  id        String   @id @default(cuid())
+  title     String
+  author    String
+  year      Int
+  cover_image_url String?
+  page_count    Int?
+  page_progress Int?
+  userId    String
+  started_at DateTime?
+  finished_at DateTime?
+  readingStatus ReadingStatus
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+enum ReadingStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  WANT_TO_READ
+  COMPLETED
 }
